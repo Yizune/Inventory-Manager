@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  background: #1a1a1a;
+  color: #ddd;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.reset-button {
+  background: #444;
+  color: white;
+  padding: 10px 20px;
+  border: 3px solid #777;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 0px #222;
+}
+
+.reset-button:hover {
+  background: #666;
+  transform: scale(1.05);
+  border-color: white;
+}
+
+.inventory-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 40px; 
+  padding: 20px;
+}
+
+.backpack-container,
+.storage-container {
+  background: #222;
+  border: 4px solid #444;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 4px 4px 0px #111;
+  position: relative;
+  display: inline-block;
+  margin: 0 20px;
+  vertical-align: top;
+}
+
+.storage-container {
+  margin-top: 40px;
+  min-height: 295px;
+}
+
+.inventory-title {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 15px 0;
+  background: #333;
+  border-bottom: 4px solid #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.storage-grid,
+.backpack-grid {
+  display: grid;
+  padding-top: 15px;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.storage-grid {
+  grid-template-columns: repeat(5, 1fr); 
+  width: 100%;
+  min-height: calc(70px * 2 + 4px); 
+}
+
+.backpack-grid {
+  grid-template-columns: repeat(3, 1fr); 
+}
+
+.inventory-slot {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #555;
+  background-color: #1e1e1e;
+  box-shadow: inset 0 0 6px #333;
+  transition: all 0.2s ease;
+  font-size: 12px;
+}
+
+.inventory-slot:hover {
+  box-shadow: inset 0 0 10px #777;
+}
+
+.item {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.item img {
+  max-width: 100%;
+  max-height: 100%;
+  transition: transform 0.2s;
+}
+
+.tooltip {
+  position: fixed; 
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 20px;
+  text-align: left;
+  border: 2px solid #777;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.tooltip-name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+}
+
+.item-container:hover .tooltip {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.storage-chest {
+  position: relative;
+}
+
+.storage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin-bottom: 8px;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-top: 15px;
+}
+
+.filter-button {
+  background: #222;
+  border: 2px solid #444;
+  padding: 20px;
+  border-radius: 6px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-button:hover {
+  background: #333;
+  border-color: white;
+}
+
+.filter-button img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s;
+  filter: invert(1);
+}
+
+.filter-button:hover img {
+  transform: scale(1.1);
+}
+
+.filter-button.active {
+  border-color: white;
+  background-color: #444;
+}
+
+.rarity-filter {
+  background: #1e1e1e;
+  color: white;
+  border: 2px solid #444;
+  border-radius: 5px;
+  padding: 14px 10px;
+  font-size: 0.7rem; 
+  cursor: pointer;  
+  margin-left: 66px;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.rarity-filter:hover {
+  background: #333;
+  border-color: white;
+}
+
+.rarity-filter option {
+  background: #222; 
+  color: white; 
+  font-family: 'Press Start 2P', sans-serif; 
+  font-size: 0.6rem;
+}
+
+.drag-preview {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.drag-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(1.2);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
