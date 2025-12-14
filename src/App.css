@@ -62,7 +62,7 @@ h1 {
 
 .storage-container {
   margin-top: 40px;
-  min-height: 295px;
+  width: fit-content;
 }
 
 .inventory-title {
@@ -252,4 +252,79 @@ h1 {
   max-height: 100%;
   transform: scale(1.2);
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 768px) {
+  h1 {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .tooltip {
+    padding: 10px 12px;
+    font-size: 0.65rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  }
+  .empty-slot {
+    font-size: 0.85em;
+  }
+  .reset-button {
+    padding: 7px 14px;
+    border-width: 2px;
+    font-size: 0.7rem;
+  }
+  .rarity-filter {
+    padding: 6px 6px;
+    font-size: 0.6rem;
+    width: max-content;
+    margin-left: 0;
+    border-radius: 4px;
+  }
+  .filter-container {
+    gap: 4px;
+    width: max-content;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .filter-button {
+    width: 32px;
+    height: 32px;
+    padding: 10px;
+  }
+  .filter-button img {
+    width: 18px;
+    height: 18px;
+  }
+  .storage-container {
+    margin-top: 20px;
+    width: fit-content;
+    padding: 10px;
+  }
+  .backpack-container {
+    padding: 10px;
+  }
+  .inventory-slot {
+    width: 40px;
+    height: 40px;
+    font-size: 9px;
+  }
+  .item {
+    width: 28px;
+    height: 28px;
+  }
+  .inventory-title {
+    font-size: 0.85rem;
+    padding: 10px 0;
+  }
+  .storage-grid,
+  .backpack-grid {
+    gap: 4px;
+    width: max-content;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .storage-grid {
+    min-height: 0px;
+    width: auto;
+  }
 }
