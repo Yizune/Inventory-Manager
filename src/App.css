@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+:root {
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   background: #1a1a1a;
   color: #ddd;
@@ -18,25 +26,22 @@ h1 {
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  line-height: 1.1;
 }
 
 .reset-button {
+  font-size: 1em;
   background: #444;
   color: white;
   padding: 10px 20px;
   border: 3px solid #777;
   border-radius: 4px;
   font-weight: bold;
+  font-family: inherit;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 2px 2px 0px #222;
-}
-
-.reset-button:hover {
-  background: #666;
-  transform: scale(1.05);
-  border-color: white;
 }
 
 .inventory-container {
@@ -113,10 +118,6 @@ h1 {
   font-size: 12px;
 }
 
-.inventory-slot:hover {
-  box-shadow: inset 0 0 10px #777;
-}
-
 .item {
   width: 50px;
   height: 50px;
@@ -154,9 +155,8 @@ h1 {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
 }
 
-.item-container:hover .tooltip {
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
+.item-container {
+  touch-action: none;
 }
 
 .storage-chest {
@@ -192,20 +192,11 @@ h1 {
   transition: all 0.2s;
 }
 
-.filter-button:hover {
-  background: #333;
-  border-color: white;
-}
-
 .filter-button img {
   width: 28px;
   height: 28px;
   transition: transform 0.2s;
   filter: invert(1);
-}
-
-.filter-button:hover img {
-  transform: scale(1.1);
 }
 
 .filter-button.active {
@@ -223,11 +214,6 @@ h1 {
   cursor: pointer;  
   margin-left: 66px;
   font-family: 'Press Start 2P', sans-serif;
-}
-
-.rarity-filter:hover {
-  background: #333;
-  border-color: white;
 }
 
 .rarity-filter option {
@@ -252,6 +238,37 @@ h1 {
   max-height: 100%;
   transform: scale(1.2);
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .reset-button:hover {
+    background: #666;
+    transform: scale(1.05);
+    border-color: white;
+  }
+
+  .inventory-slot:hover {
+    box-shadow: inset 0 0 10px #777;
+  }
+
+  .item-container:hover .tooltip {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .filter-button:hover {
+    background: #333;
+    border-color: white;
+  }
+
+  .filter-button:hover img {
+    transform: scale(1.1);
+  }
+
+  .rarity-filter:hover {
+    background: #333;
+    border-color: white;
+  }
 }
 
 @media (max-width: 768px) {
@@ -326,5 +343,9 @@ h1 {
   .storage-grid {
     min-height: 0px;
     width: auto;
+  }
+  .drag-preview img {
+    max-width: 60%;
+    max-height: 60%;
   }
 }

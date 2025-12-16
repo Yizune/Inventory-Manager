@@ -7,12 +7,19 @@ const rarityColors = {
   rare: 'purple',
 };
 
+const HOVER_MEDIA_QUERY = '(any-hover: hover)';
+
+export const isHoverDevice = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia(HOVER_MEDIA_QUERY).matches;
+
 const Item = ({ id, name, icon, category, rarity, stats }) => {
   const { attributes, listeners, setNodeRef } = useDraggable({ id });
   const [isHovered, setIsHovered] = useState(false); 
   const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 }); 
 
   const handleMouseEnter = (event) => {
+    if (!isHoverDevice()) return;
     setIsHovered(true);
     const rect = event.currentTarget.getBoundingClientRect();
     setTooltipPosition({
@@ -22,6 +29,7 @@ const Item = ({ id, name, icon, category, rarity, stats }) => {
   };
 
   const handleMouseLeave = () => {
+    if (!isHoverDevice()) return;
     setIsHovered(false);
   };
 
@@ -35,7 +43,7 @@ const Item = ({ id, name, icon, category, rarity, stats }) => {
       onMouseLeave={handleMouseLeave} 
     >
       <img src={icon} alt={name} className="item" />
-      {isHovered && (
+      {isHovered && isHoverDevice() && (
         <div
           className="tooltip"
           style={{
